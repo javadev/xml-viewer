@@ -1,0 +1,1221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dossieranalyser-config version="1.3">
+    <checkers>
+        <checker id="FraudCheckerMockImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.FraudCheckerMock</class>
+        </checker>
+        <checker id="FraudCheckerImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.FraudCheckerThread</class>
+        </checker>
+        <checker id="InProcessFraudChecker" canExecuteNext="false">
+            <class>ua.cetelem.DossierAnalyser.checkers.InProcessFraudChecker</class>
+        </checker>
+        <checker id="SapCheckerMockImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.SapCheckerMock</class>
+        </checker>
+        <checker id="SapCheckerImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.SapCheckerThread</class>
+        </checker>
+        <checker id="SapCheckerThreadSilent" canExecuteNext="false">
+            <class>ua.cetelem.DossierAnalyser.checkers.SapCheckerThreadSilent</class>
+        </checker>
+        <checker id="InProcessSapChecker" canExecuteNext="false">
+            <class>ua.cetelem.DossierAnalyser.checkers.InProcessSapChecker</class>
+        </checker>
+        <checker id="ExpertCheckerMockImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.ExpertCheckerMock</class>
+        </checker>
+        <checker id="ExpertCheckerImpl" canExecuteNext="true">
+            <class>ua.cetelem.DossierAnalyser.checkers.ExpertCheckerThread</class>
+        </checker>
+        <checker id="InProcessExpertChecker" canExecuteNext="false">
+            <class>ua.cetelem.DossierAnalyser.checkers.InProcessExpertChecker</class>
+        </checker>
+        <checker id="ExpertCheckerThreadSilent" canExecuteNext="false">
+            <class>ua.cetelem.DossierAnalyser.checkers.ExpertCheckerThreadSilent</class>
+        </checker>
+    </checkers>
+    <actions>
+        <action id="ActionFraudCheckClient">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionFraudCheckClient</class>
+            <value>0</value>
+        </action>
+        <action id="ActionFraudCheckDetails">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionFraudCheckDetails</class>
+            <value>0</value>
+        </action>
+        <action id="SapCreateBpAndDeal">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateBpAndDeal</class>
+            <value>2008-08-27</value>
+            <desiredDossierStatus>8</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CONTRUCT_SIGNED</description>
+        </action>
+        <action id="SapCreateBpAndDealWithSignedDate">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateBpAndDealWithSignedDate</class>
+            <value>2008-08-27</value>
+        </action>
+        <action id="ActionSapCreateDossier">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateDossier</class>
+            <value>0</value>
+        </action>
+        <action id="SapCreateDeal">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateDossier</class>
+            <value>100</value>
+        </action>
+        <action id="ActionSapCancel">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapRefuseOfDeal</class>
+            <value>18</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CLIENT_REFUSE_LOAN</description>
+            <desiredDossierStatus>18</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CLIENT_REFUSE_LOAN</description>
+        </action>
+        <action id="ActionSapRefuse">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapRefuseOfDeal</class>
+            <value>14</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_REFUSAL_CC</description>
+            <desiredDossierStatus>14</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_REFUSAL_CC</description>
+        </action>
+        <action id="ActionSapPolyFinancedWithSapCheck">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapPolyFinancedWithSapCheck</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataSetDossierStatus_Signed">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>8</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CONTRUCT_SIGNED</description>
+        </action>
+        <action id="ActionRataSetDossierStatus_ReturnOfGoods">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>17</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_GOOD_RETURN</description>
+        </action>
+        <action id="ActionRataSetDossierStatus_Accept">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>6</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_ACCEPTED_CC</description>
+        </action>
+        <action id="ActionRataSetDossierStatus_Fraud">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>20</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_REFUSED_FRAUD</description>
+        </action>
+        <action id="ActionRataSetDecisionState">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDecisionState</class>
+            <value>0</value>
+        </action>
+        <action id="ActionSapCreateBp">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateBp</class>
+            <value>100</value>
+        </action>
+        <action id="ActionSapGetBp">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapGetBp</class>
+            <value>false</value>
+        </action>
+        <action id="ActionSapGetBp_BpMayNotExistInSap">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapGetBp</class>
+            <value>true</value>
+        </action>
+        <action id="ActionSapCreateBpAndDeal">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateBpAndDeal</class>
+            <value>0</value>
+            <desiredDossierStatus>8</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CONTRUCT_SIGNED</description>
+        </action>
+        <action id="ActionSapCreateBpAndDeal_DontSetDesiredStatus">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCreateBpAndDeal</class>
+            <value>0</value>
+            
+            
+            
+        </action>
+        <action id="ActionSapCompareBp">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCompareBp</class>
+            <value>0</value>
+        </action>
+        <action id="ActionSapCallFinanced">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCallFinanced</class>
+            <value>0</value>
+            <desiredDossierStatus>12</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_FINANCED</description>
+        </action>
+        <action id="ActionSapCallReturnOfGoods">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapCallReturnOfGoods</class>
+            <value>0</value>
+            <desiredDossierStatus>17</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_GOOD_RETURN</description>
+        </action>
+        <action id="ActionSapGetDealState">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapGetDealState</class>
+            <value>0</value>
+        </action>
+        <action id="ActionEsMakeDecision">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionEsMakeDecision</class>
+            <value>0</value>
+        </action>
+        <action id="ActionEsAfterDecision">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionEsAfterDecision</class>
+            <value>0</value>
+        </action>
+        <action id="serverFacadeCreateDossier">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSleep</class>
+            <value>100</value>
+        </action>
+        <action id="init">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSleep</class>
+            <value>100</value>
+        </action>
+        <action id="shutdown">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSleep</class>
+            <value>100</value>
+        </action>
+        <action id="sleep">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSleep</class>
+            <value>100</value>
+        </action>
+        <action id="sleep_mock">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSleep</class>
+            <value>1</value>
+        </action>
+        <action id="parse_responce">
+            <class>ua.cetelem.DossierAnalyser.ActionParseResponce</class>
+            <value>true</value>
+        </action>
+        <action id="ActionRataSetDateOfFinancing">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDateOfFinancing</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataSetDateOfGoodReturn">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDateOfGoodReturn</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataSetDateOfDecisionMaking">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDateOfDecisionMaking</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataSetDateOfSignature">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDateOfSignature</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataSetDateOfComingAgency">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDateOfComingAgency</class>
+            <value>0</value>
+        </action>
+        <action id="ActionRataAddToFinalDecision_refuse">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataAddToFinalDecision</class>
+            <value>9</value>
+        </action>
+        <action id="ActionRataAddToFinalDecision_accept">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataAddToFinalDecision</class>
+            <value>500</value>
+        </action>
+        <action id="ActionRataInsertDaDossierState">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataInsertDaDossierState</class>
+            <value>0</value>
+        </action>
+        <action id="ActionPolyBeforeDecision">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionPolyBeforeDecision</class>
+            <value>0</value>
+        </action>
+        <action id="ActionPolyAfterDecision">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionPolyAfterDecision</class>
+            <value>0</value>
+        </action>
+        <action id="ActionPolyCheckPerson">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionPolyCheckPerson</class>
+            <value>100</value>
+        </action>
+        <action id="ActionPolyCheckAgency">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionPolyCheckAgency</class>
+            <value>100</value>
+            <ctor>
+                <arg id="1">
+                    <class>java.lang.Long</class>
+                    <value>400000</value>
+                </arg>
+                <arg id="2">
+                    <class>java.lang.Long</class>
+                    <value>1000</value>
+                </arg>
+            </ctor>
+            <var id="sleepTime">
+                <class>java.lang.Long</class>
+                <ctor>
+                    <arg id="1">
+                        <class>java.lang.Long</class>
+                        <value>1000</value>
+                    </arg>
+                </ctor>
+                <condition id="whenToSet_sleepTime">
+                    <class>ua.cetelem.DossierAnalyser.actions.ActionPolyCheckAgency</class>
+                </condition>
+            </var>
+            <var id="timeout">
+                <class>java.lang.Long</class>
+                <ctor>
+                    <arg id="1">
+                        <class>java.lang.Long</class>
+                        <value>400000</value>
+                    </arg>
+                </ctor>
+            </var>
+            <var id="MyActionInit">
+                <class>ua.cetelem.DossierAnalyser.actions.ActionInit</class>
+                <ctor>
+                    <arg id="1">
+                        <class>java.lang.Long</class>
+                        <value>400000</value>
+                    </arg>
+                    <arg id="2">
+                        <class>java.lang.Long</class>
+                        <value>1000</value>
+                    </arg>
+                </ctor>
+                <field id="sleepTime">// ai.sleepTime = new Long(1000);
+                    <class>java.lang.Long</class>
+                    <value>1000</value>
+                </field>
+            </var>
+        </action>
+        <action id="ActionSapPolyFinanced">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionSapPolyFinanced</class>
+            <value>-1</value>
+            <desiredDossierStatus>12</desiredDossierStatus>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_FINANCED</description>
+        </action>
+        <action id="ActionDsReinit">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionDsReinit</class>
+            <value>0</value>
+        </action>
+        <action id="ActionInsuranceCreateDeal">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionInsuranceCreateDeal</class>
+            <value>0</value>
+        </action>
+        <action id="ActionInsuranceFinanceDeal">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionInsuranceFinanceDeal</class>
+            <value>0</value>
+        </action>
+        <action id="ratanetdatabase___Action_check_sap_cancel">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>18</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CLIENT_REFUSE_LOAN</description>
+        </action>
+        <action id="ratanetdatabase___Action_check_sap_refuse">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>14</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_REFUSAL_CC</description>
+        </action>
+        <action id="ratanetdatabase___Action_check_sap_sign_contract">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>8</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CONTRUCT_SIGNED</description>
+        </action>
+        <action id="ratanetdatabase___Action_fraud_check_client">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>4</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_TOBE_STUDY</description>
+        </action>
+        <action id="ratanetdatabase___Action_es_make_decision">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>4</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_TOBE_STUDY</description>
+        </action>
+        <action id="ratanetdatabase___Action_sap_check_contract">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>4</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_TOBE_STUDY</description>
+        </action>
+        <action id="ratanetdatabase___Action_check_sap_financed">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>11</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_TOBE_FINANCED</description>
+        </action>
+        <action id="ratanetdatabase___ActionRata_check_sap_cancel">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>18</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CLIENT_REFUSE_LOAN</description>
+        </action>
+        <action id="ratanetdatabase___Action_check_sap_ReturnOfGoods">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>17</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_GOOD_RETURN</description>
+        </action>
+        <action id="ratanetdatabase___Action_sap_only_cancel_dossier">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>18</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_CLIENT_REFUSE_LOAN</description>
+        </action>
+        <action id="ratanetdatabase___Action_rata_accept">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>6</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_ACCEPTED_CC</description>
+        </action>
+        <action id="ratanetdatabase___Action_rata_fraud">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierStatus</class>
+            <value>20</value>
+            <description>IN_DOSSIER_CONSTANTS.STATUS_OF_DOSSIER.STATUS_REFUSED_FRAUD</description>
+        </action>
+        <action id="ratanetdatabase___ActionRataSetDossierErrorFromIps">
+            <class>ua.cetelem.DossierAnalyser.actions.ActionRataSetDossierErrorFromIps</class>
+            <value>0</value>
+        </action>
+    </actions>
+    <rules>
+        <rule id="check_fraud_test" executer="FraudCheker">
+            <action>sleep</action>
+        </rule>
+        <rule id="check_fraud" executer="FraudCheker">
+            <action>sleep</action>
+        </rule>
+        <rule id="check_fraud_mock" executer="FraudCheker">
+            <action>sleep_mock</action>
+        </rule>
+        <rule id="rule_fraud_check_client" executer="FraudCheker">
+            <action>ActionRataSetDateOfComingAgency</action>
+            <action>ActionFraudCheckClient</action>
+            <action>ActionFraudCheckDetails</action>
+        </rule>
+        <rule id="check_sap_test" executer="SapChecker">
+            <action>sleep</action>
+        </rule>
+        <rule id="check_sap" executer="SapChecker">
+            <action>sleep</action>
+            <action>SapCreateBpAndDeal</action>
+            <action>ActionSapGetBp</action>
+            
+            
+            
+            
+        </rule>
+        <rule id="rule_check_sap_cancel" executer="SapChecker">
+            <action>ActionSapGetBp</action>
+            <action>ActionRataSetDecisionState</action>
+            <action>ActionRataSetDateOfDecisionMaking</action>
+            <action>ActionPolyAfterDecision</action>
+        </rule>
+        <rule id="rule_check_sap_only_cancel" executer="SapChecker">
+            <action>ActionSapGetBp</action>
+            <action>ActionSapCancel</action>
+            <action>ActionRataSetDecisionState</action>
+            <action>ActionRataSetDateOfDecisionMaking</action>
+            <action>ActionPolyAfterDecision</action>
+        </rule>
+        <rule id="check_sap_refuse" executer="SapChecker">
+            <action>ActionSapGetBp</action>
+            <action>ActionRataAddToFinalDecision_refuse</action>
+            <action>ActionEsAfterDecision</action>
+            <action>ActionRataSetDecisionState</action>
+            <action>ActionRataSetDateOfDecisionMaking</action>
+            <action>ActionPolyAfterDecision</action>
+        </rule>
+        <rule id="check_sap_create_bp" executer="SapChecker">
+            <action>ActionSapCreateBp</action>
+            <action>ActionSapGetBp</action>
+        </rule>
+        <rule id="check_sap_get_bp" executer="SapChecker">
+            <action>ActionSapGetBp</action>
+        </rule>
+        <rule id="rule_sap_create_dossier" executer="SapChecker">
+            <action>ActionSapCreateDossier</action>
+        </rule>
+        <rule id="rule_sap_sign_contract" executer="SapChecker">
+            <action>ActionSapCreateBpAndDeal</action>
+            <action>ActionSapGetBp</action>
+            <action>ActionInsuranceCreateDeal</action>
+            <action>ActionRataSetDossierStatus_Signed</action>
+            
+        </rule>
+        <rule id="rule_sap_check_contract" executer="SapChecker">
+            <action>ActionSapGetBp_BpMayNotExistInSap</action>
+            <action>ActionSapCompareBp</action>
+            <action>ratanetdatabase___ActionRataSetDossierErrorFromIps</action>
+        </rule>
+        <rule id="rule_sap_financed" executer="SapChecker">
+            <action>ActionSapGetBp</action>
+            <action>ActionRataSetDateOfFinancing</action>
+            <action>ActionSapPolyFinanced</action>
+            <action>ActionInsuranceFinanceDeal</action>
+        </rule>
+        <rule id="rule_sap_financed_with_sap_check" executer="SapChecker">
+            <action>ActionSapPolyFinancedWithSapCheck</action>
+        </rule>
+        <rule id="rule_sap_ReturnOfGoods" executer="SapChecker">
+            <action>ActionSapCallReturnOfGoods</action>
+            <action>ActionRataSetDossierStatus_ReturnOfGoods</action>
+            <action>ActionRataSetDateOfGoodReturn</action>
+        </rule>
+        <rule id="rule_rata_accept" executer="SapChecker">
+            <action>ActionRataAddToFinalDecision_accept</action>
+            <action>ActionEsAfterDecision</action>
+            <action>ActionRataSetDossierStatus_Accept</action>
+            <action>ActionRataSetDecisionState</action>
+            <action>ActionRataSetDateOfDecisionMaking</action>
+            <action>ActionPolyAfterDecision</action>
+        </rule>
+        <rule id="rule_rata_fraud" executer="SapChecker">
+            <action>ActionRataSetDossierStatus_Fraud</action>
+            <action>ActionRataSetDateOfDecisionMaking</action>
+        </rule>
+        <rule id="rule_rata_insert_da_dossier_state" executer="SapChecker">
+            <action>ActionRataInsertDaDossierState</action>
+        </rule>
+        <rule id="rule_poly_check_person" executer="ExpertChecker">
+            <action>ActionRataSetDateOfComingAgency</action>
+            <action>ActionPolyBeforeDecision</action>
+            <action>ActionPolyCheckPerson</action>
+        </rule>
+        <rule id="rule_poly_check_agency" executer="ExpertChecker">
+            <action>ActionPolyCheckAgency</action>
+        </rule>
+        <rule id="rule_poly_fix_check_agency" executer="ExpertChecker">
+            <action>ActionDsReinit</action>
+            <action>ActionRataSetDateOfComingAgency</action>
+            <action>ActionPolyBeforeDecision</action>
+            <action>ActionPolyCheckPerson</action>
+        </rule>
+        <rule id="check_expert_test" executer="ExpertChecker">
+            <action>sleep</action>
+        </rule>
+        <rule id="check_expert" executer="ExpertChecker">
+            <action>sleep</action>
+        </rule>
+        <rule id="rule_es_make_decision" executer="ExpertCheker">
+            <action>ActionEsMakeDecision</action>
+        </rule>
+        <rule id="rule_sap_getDealState" executer="SapCheker">
+            <action>ActionSapGetDealState</action>
+        </rule>
+        <rule id="ratanetdatabase___check_sap_cancel" executer="SapChecker">
+            <action>ratanetdatabase___Action_check_sap_cancel</action>
+        </rule>
+        <rule id="ratanetdatabase___check_sap_refuse" executer="SapChecker">
+            <action>ratanetdatabase___Action_check_sap_refuse</action>
+        </rule>
+        <rule id="ratanetdatabase___check_sap_sign_contract" executer="SapChecker">
+            <action>ratanetdatabase___Action_check_sap_sign_contract</action>
+        </rule>
+        <rule id="ratanetdatabase___fraud_check_client" executer="FraudCheker">
+            <action>ratanetdatabase___Action_fraud_check_client</action>
+        </rule>
+        <rule id="ratanetdatabase___es_make_decision" executer="ExpertChecker">
+            <action>ratanetdatabase___Action_es_make_decision</action>
+        </rule>
+        <rule id="ratanetdatabase___sap_check_contract" executer="SapChecker">
+            <action>ratanetdatabase___Action_sap_check_contract</action>
+        </rule>
+        <rule id="ratanetdatabase___check_sap_financed" executer="SapChecker">
+            <action>ratanetdatabase___Action_check_sap_financed</action>
+        </rule>
+        <rule id="ratanetdatabase___check_sap_ReturnOfGoods" executer="SapChecker">
+            <action>ratanetdatabase___Action_check_sap_ReturnOfGoods</action>
+        </rule>
+        <rule id="ratanetdatabase___sap_only_cancel_dossier" executer="SapChecker">
+            <action>ratanetdatabase___Action_sap_only_cancel_dossier</action>
+        </rule>
+        <rule id="ratanetdatabase___rata_accept" executer="SapChecker">
+            <action>ratanetdatabase___Action_rata_accept</action>
+        </rule>
+        <rule id="ratanetdatabase___rata_fraud" executer="SapChecker">
+            <action>ratanetdatabase___Action_rata_fraud</action>
+        </rule>
+    </rules>
+    <commands>
+        <command id="fraud_test" type="fraud" insistence="insistence_continue">
+            <checker>FraudCheckerMockImpl</checker>
+            <rule>check_fraud_test</rule>
+        </command>
+        <command id="fraud_mock" type="fraud">
+            <checker>FraudCheckerMockImpl</checker>
+            <rule>check_fraud_test</rule>
+        </command>
+        <command id="fraud" type="fraud">
+            <checker>FraudCheckerImpl</checker>
+            <rule>check_fraud</rule>
+        </command>
+        <command id="fraud_check_client" type="fraud">
+            <checker>FraudCheckerImpl</checker>
+            <rule>rule_fraud_check_client</rule>
+        </command>
+        <command id="sap_test" type="sap">
+            <checker>SapCheckerMockImpl</checker>
+            <rule>check_sap_test</rule>
+        </command>
+        <command id="sap_mock" type="sap">
+            <checker>SapCheckerMockImpl</checker>
+            <rule>check_sap_test</rule>
+        </command>
+        <command id="sap" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>check_sap</rule>
+        </command>
+        <command id="sap_cancel" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_check_sap_cancel</rule>
+        </command>
+        <command id="sap_only_cancel" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_check_sap_only_cancel</rule>
+        </command>
+        <command id="sap_refuse" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>check_sap_refuse</rule>
+        </command>
+        <command id="sap_create_bp" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>check_sap_create_bp</rule>
+        </command>
+        <command id="sap_get_bp" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>check_sap_get_bp</rule>
+        </command>
+        <command id="sap_create_dossier" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_create_dossier</rule>
+        </command>
+        <command id="sap_sign_contract" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_sign_contract</rule>
+        </command>
+        <command id="sap_check_contract" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_check_contract</rule>
+        </command>
+        <command id="sap_financed" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_financed</rule>
+        </command>
+        <command id="sap_financed_with_sap_check" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_financed_with_sap_check</rule>
+        </command>
+        <command id="sap_ReturnOfGoods" type="sap" insistence="insistence_break">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_sap_ReturnOfGoods</rule>
+        </command>
+        <command id="es_make_decision" type="expert">
+            <checker>ExpertCheckerImpl</checker>
+            <rule>rule_es_make_decision</rule>
+        </command>
+        <command id="sapSilent_getDealState" type="sap">
+            <checker>SapCheckerThreadSilent</checker>
+            <rule>rule_sap_getDealState</rule>
+        </command>
+        <command id="cmd_rata_accept" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_rata_accept</rule>
+        </command>
+        <command id="cmd_rata_fraud" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_rata_fraud</rule>
+        </command>
+        <command id="cmd_rata_save_status_of_dossier" type="sap">
+            <checker>SapCheckerImpl</checker>
+            <rule>rule_rata_insert_da_dossier_state</rule>
+        </command>
+        <command id="cmd_poly_check_person" type="expert">
+            <checker>ExpertCheckerImpl</checker>
+            <rule>rule_poly_check_person</rule>
+        </command>
+        <command id="cmd_poly_check_agency" type="expert">
+            <checker>ExpertCheckerImpl</checker>
+            <rule>rule_poly_check_agency</rule>
+        </command>
+        <command id="cmd_poly_fix_check_agency" type="expert">
+            <checker>ExpertCheckerImpl</checker>
+            <rule>rule_poly_fix_check_agency</rule>
+        </command>
+        <command id="cmd_InProcess___sap_cancel" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_check_sap_cancel</rule>
+        </command>
+        <command id="cmd_InProcess___sap_refuse" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>check_sap_refuse</rule>
+        </command>
+        <command id="cmd_InProcess___sap_sign_contract" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_sap_sign_contract</rule>
+        </command>
+        <command id="cmd_InProcess___fraud_check_client" type="fraud" insistence="insistence_break">
+            <checker>InProcessFraudChecker</checker>
+            <rule>rule_fraud_check_client</rule>
+        </command>
+        <command id="cmd_InProcess___es_make_decision" type="expert" insistence="insistence_break">
+            <checker>InProcessExpertChecker</checker>
+            <rule>rule_es_make_decision</rule>
+        </command>
+        <command id="cmd_InProcess___sap_check_contract" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_sap_check_contract</rule>
+        </command>
+        <command id="cmd_InProcess___sap_financed" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_sap_financed</rule>
+        </command>
+        <command id="cmd_InProcess___sap_ReturnOfGoods" type="sap" insistence="insistence_break">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_sap_ReturnOfGoods</rule>
+        </command>
+        <command id="cmd_InProcess___rata_accept" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_rata_accept</rule>
+        </command>
+        <command id="cmd_InProcess___rata_fraud" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>rule_rata_fraud</rule>
+        </command>
+        <command id="expert_test" type="expert">
+            <checker>ExpertCheckerMockImpl</checker>
+            <rule>check_expert_test</rule>
+        </command>
+        <command id="expert_mock" type="expert">
+            <checker>ExpertCheckerMockImpl</checker>
+            <rule>check_expert_test</rule>
+        </command>
+        <command id="ratanetdatabase___sap_cancel" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___check_sap_cancel</rule>
+        </command>
+        <command id="ratanetdatabase___sap_refuse" type="sap" insistence="insistence_continue">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_refuse</rule>
+        </command>
+        <command id="ratanetdatabase___sap_sign_contract" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___check_sap_sign_contract</rule>
+        </command>
+        <command id="ratanetdatabase___fraud_check_client" type="fraud" insistence="insistence_continue">
+            <checker>FraudCheckerImpl</checker>
+            <rule>ratanetdatabase___fraud_check_client</rule>
+        </command>
+        <command id="ratanetdatabase___es_make_decision" type="expert" insistence="insistence_continue">
+            <checker>ExpertCheckerImpl</checker>
+            <rule>ratanetdatabase___es_make_decision</rule>
+        </command>
+        <command id="ratanetdatabase___sap_check_contract" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___sap_check_contract</rule>
+        </command>
+        <command id="ratanetdatabase___sap_financed" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___check_sap_financed</rule>
+        </command>
+        <command id="ratanetdatabase___sap_ReturnOfGoods" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___check_sap_ReturnOfGoods</rule>
+        </command>
+        <command id="ratanetdatabase___sap_only_cancel_dossier" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___sap_only_cancel_dossier</rule>
+        </command>
+        <command id="ratanetdatabase___rata_accept" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___rata_accept</rule>
+        </command>
+        <command id="ratanetdatabase___rata_fraud" type="sap" insistence="insistence_continue">
+            <checker>SapCheckerImpl</checker>
+            <rule>ratanetdatabase___rata_fraud</rule>
+        </command>
+        <command id="test_InProcess___sap_cancel_dossier" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_cancel</rule>
+        </command>
+        <command id="test_InProcess___sap_refuse_dossier" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_refuse</rule>
+        </command>
+        <command id="test_InProcess___sap_sign_contract" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_sign_contract</rule>
+        </command>
+        <command id="test_InProcess___fraud_check_client" type="fraud">
+            <checker>InProcessFraudChecker</checker>
+            <rule>ratanetdatabase___fraud_check_client</rule>
+        </command>
+        <command id="test_InProcess___es_make_decision" type="expert">
+            <checker>InProcessExpertChecker</checker>
+            <rule>ratanetdatabase___es_make_decision</rule>
+        </command>
+        <command id="test_InProcess___sap_check_contract" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___sap_check_contract</rule>
+        </command>
+        <command id="test_InProcess___sap_financed" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_financed</rule>
+        </command>
+        <command id="test_InProcess___sap_ReturnOfGoods" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___check_sap_ReturnOfGoods</rule>
+        </command>
+        <command id="test_InProcess___sap_only_cancel_dossier" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___sap_only_cancel_dossier</rule>
+        </command>
+        <command id="test_InProcess___rata_accept" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___rata_accept</rule>
+        </command>
+        <command id="test_InProcess___rata_fraud" type="sap">
+            <checker>InProcessSapChecker</checker>
+            <rule>ratanetdatabase___rata_fraud</rule>
+        </command>
+    </commands>
+    <command-sets>
+        <command-set id="all_cmd_set">
+            <command>fraud</command>
+            <command>sap</command>
+            <command>expert</command>
+        </command-set>
+        <command-set id="without_expert_cmd_set">
+            <command>fraud</command>
+            <command>sap</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="sap_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_cancel</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_only_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_only_cancel</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_refuse_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_refuse</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sign_contract_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_sign_contract</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="check_fraud_es_sap_cmd_set">
+            <command>fraud_check_client</command>
+            <command>es_make_decision</command>
+            <command>sap_check_contract</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_financed_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_financed</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_financed_with_sap_check_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_financed_with_sap_check</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_ReturnOfGoods_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>sap_ReturnOfGoods</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="sap_Silent_getDealState_cmd_set">
+            <command>sapSilent_getDealState</command>
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+        </command-set>
+        <command-set id="rata_accept_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_rata_accept</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="rata_fraud_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_rata_fraud</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="rata_save_status_of_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_rata_save_status_of_dossier</command>
+            <command>sapSilent_getDealState</command>
+            
+        </command-set>
+        <command-set id="InProcess___sap_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___sap_cancel</command>
+        </command-set>
+        <command-set id="InProcess___sap_refuse_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___sap_refuse</command>
+        </command-set>
+        <command-set id="InProcess___sap_sign_contract_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___sap_sign_contract</command>
+        </command-set>
+        <command-set id="InProcess___check_fraud_es_sap_cmd_set">
+            <command>cmd_InProcess___fraud_check_client</command>
+            <command>cmd_InProcess___es_make_decision</command>
+            <command>cmd_InProcess___sap_check_contract</command>
+        </command-set>
+        <command-set id="InProcess___sap_financed_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___sap_financed</command>
+        </command-set>
+        <command-set id="InProcess___sap_ReturnOfGoods_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___sap_ReturnOfGoods</command>
+        </command-set>
+        <command-set id="InProcess___rata_accept_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___rata_accept</command>
+        </command-set>
+        <command-set id="InProcess___rata_fraud_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>cmd_InProcess___rata_fraud</command>
+        </command-set>
+        <command-set id="poly_check_person_cmd_set">
+            <command>fraud_mock</command>
+            <command>cmd_poly_check_person</command>
+            <command>sap_mock</command>
+        </command-set>
+        <command-set id="poly_check_agency_cmd_set">
+            <command>fraud_mock</command>
+            <command>cmd_poly_check_agency</command>
+            <command>sap_mock</command>
+        </command-set>
+        <command-set id="poly_fix_check_agency_cmd_set">
+            <command>fraud_mock</command>
+            <command>cmd_poly_fix_check_agency</command>
+            <command>sap_mock</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sap_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_cancel</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sap_refuse_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_refuse</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sign_contract_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_sign_contract</command>
+        </command-set>
+        <command-set id="ratanetdatabase___check_fraud_es_sap_cmd_set">
+            <command>ratanetdatabase___fraud_check_client</command>
+            <command>ratanetdatabase___es_make_decision</command>
+            <command>ratanetdatabase___sap_check_contract</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sap_financed_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_financed</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sap_ReturnOfGoods_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_ReturnOfGoods</command>
+        </command-set>
+        <command-set id="ratanetdatabase___sap_only_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___sap_only_cancel_dossier</command>
+        </command-set>
+        <command-set id="ratanetdatabase___rata_accept_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___rata_accept</command>
+        </command-set>
+        <command-set id="ratanetdatabase___rata_fraud_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>ratanetdatabase___rata_fraud</command>
+        </command-set>
+        <command-set id="test_cmd_set">
+            <command>fraud_test</command>
+            <command>sap_test</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="test_sap_create_bp_cmd_set">
+            <command>fraud_test</command>
+            <command>sap_create_bp</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="test_sap_get_bp_cmd_set">
+            <command>fraud_test</command>
+            <command>sap_get_bp</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="test_sap_create_dossier_cmd_set">
+            <command>fraud_test</command>
+            <command>sap_create_dossier</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="test_fraud_check_client_cmd_set">
+            <command>fraud_check_client</command>
+            <command>sap_test</command>
+            <command>expert_test</command>
+        </command-set>
+        <command-set id="test_es_make_decision_cmd_set">
+            <command>fraud_test</command>
+            <command>sap_test</command>
+            <command>es_make_decision</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_cancel_dossier</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_refuse_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_refuse_dossier</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_sign_contract_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_sign_contract</command>
+        </command-set>
+        <command-set id="test_InProcess___check_fraud_es_sap_cmd_set">
+            <command>test_InProcess___fraud_check_client</command>
+            <command>test_InProcess___es_make_decision</command>
+            <command>test_InProcess___sap_check_contract</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_financed_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_financed</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_ReturnOfGoods_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_ReturnOfGoods</command>
+        </command-set>
+        <command-set id="test_InProcess___sap_only_cancel_dossier_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___sap_only_cancel_dossier</command>
+        </command-set>
+        <command-set id="test_InProcess___rata_accept_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___rata_accept</command>
+        </command-set>
+        <command-set id="test_InProcess___rata_fraud_cmd_set">
+            <command>fraud_mock</command>
+            <command>expert_mock</command>
+            <command>test_InProcess___rata_fraud</command>
+        </command-set>
+    </command-sets>
+    <profiles>
+        <profile id="1" name="all_profile">
+            <command-set>all_cmd_set</command-set>
+        </profile>
+        <profile id="2" name="without_expert_profile">
+            <command-set>without_expert_cmd_set</command-set>
+        </profile>
+        <profile id="3" name="sap_cancel_dossier_profile">
+            <command-set>sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="4" name="sap_refuse_dossier_profile">
+            <command-set>sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="5" name="sign_contract_profile">
+            <command-set>sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="6" name="check_fraud_es_sap_profile">
+            <command-set>check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="7" name="sap_financed_profile">
+            <command-set>sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="107" name="sap_financed_with_sap_check_profile">
+            <command-set>sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="8" name="sap_ReturnOfGoods_profile">
+            <command-set>sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+        <profile id="9" name="sap_only_cancel_dossier_profile">
+            <command-set>sap_only_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="10" name="rata_accept_profile">
+            <command-set>rata_accept_cmd_set</command-set>
+        </profile>
+        <profile id="11" name="rata_fraud_profile">
+            <command-set>rata_fraud_cmd_set</command-set>
+        </profile>
+        <profile id="12" name="poly_check_person">
+            <command-set>poly_check_person_cmd_set</command-set>
+        </profile>
+        <profile id="13" name="poly_check_agency">
+            <command-set>poly_check_agency_cmd_set</command-set>
+        </profile>
+        <profile id="14" name="poly_fix_check_agency">
+            <command-set>poly_fix_check_agency_cmd_set</command-set>
+        </profile>
+        <profile id="15" name="rata_save_status_of_dossier">
+            <command-set>rata_save_status_of_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_3" name="InProcess___sap_cancel_dossier_profile">
+            <command-set>InProcess___sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_4" name="InProcess___sap_refuse_dossier_profile">
+            <command-set>InProcess___sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_5" name="InProcess___sap_sign_contract_profile">
+            <command-set>InProcess___sap_sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_6" name="InProcess___check_fraud_es_sap_profile">
+            <command-set>InProcess___check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_7" name="InProcess___sap_financed_profile">
+            <command-set>InProcess___sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_8" name="InProcess___sap_ReturnOfGoods_profile">
+            <command-set>InProcess___sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_9" name="InProcess___sap_only_cancel_dossier_profile">
+            <command-set>InProcess___sap_only_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_10" name="InProcess___rata_accept_profile">
+            <command-set>InProcess___rata_accept_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_11" name="InProcess___rata_fraud_profile">
+            <command-set>InProcess___rata_fraud_cmd_set</command-set>
+        </profile>
+        <profile id="1001" name="test_profile">
+            <command-set>test_cmd_set</command-set>
+        </profile>
+        <profile id="1002" name="test_sap_create_bp_profile">
+            <command-set>test_sap_create_bp_cmd_set</command-set>
+        </profile>
+        <profile id="1003" name="test_sap_get_bp_profile">
+            <command-set>test_sap_get_bp_cmd_set</command-set>
+        </profile>
+        <profile id="1004" name="test_sap_create_dossier_profile">
+            <command-set>test_sap_create_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="1005" name="test_fraud_check_client_profile">
+            <command-set>test_fraud_check_client_cmd_set</command-set>
+        </profile>
+        <profile id="1006" name="test_es_make_decision_profile">
+            <command-set>test_es_make_decision_cmd_set</command-set>
+        </profile>
+        <profile id="200_3" name="test_ratanetdatabase___sap_cancel_dossier_profile">
+            <command-set>ratanetdatabase___sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="200_4" name="test_ratanetdatabase___sap_refuse_dossier_profile">
+            <command-set>ratanetdatabase___sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="200_5" name="test_ratanetdatabase___sign_contract_profile">
+            <command-set>ratanetdatabase___sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="200_6" name="test_ratanetdatabase___check_fraud_es_sap_profile">
+            <command-set>ratanetdatabase___check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="200_7" name="test_ratanetdatabase___sap_financed_profile">
+            <command-set>ratanetdatabase___sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="200_107" name="test_sap___Silent_getDealState_profile">
+            <command-set>sap_Silent_getDealState_cmd_set</command-set>
+        </profile>
+        <profile id="200_8" name="test_ratanetdatabase___sap_ReturnOfGoods_profile">
+            <command-set>ratanetdatabase___sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+        <profile id="200_9" name="test_ratanetdatabase___sap_only_cancel_dossier_profile">
+            <command-set>ratanetdatabase___sap_only_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="200_10" name="test_ratanetdatabase___rata_accept_profile">
+            <command-set>ratanetdatabase___rata_accept_cmd_set</command-set>
+        </profile>
+        <profile id="200_11" name="test_ratanetdatabase___rata_fraud_profile">
+            <command-set>ratanetdatabase___rata_fraud_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_3" name="test_InProcess___sap_cancel_dossier_profile">
+            <command-set>test_InProcess___sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_4" name="test_InProcess___sap_refuse_dossier_profile">
+            <command-set>test_InProcess___sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_5" name="test_InProcess___sap_sign_contract_profile">
+            <command-set>test_InProcess___sap_sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_6" name="test_InProcess___check_fraud_es_sap_profile">
+            <command-set>test_InProcess___check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_7" name="test_InProcess___sap_financed_profile">
+            <command-set>test_InProcess___sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_8" name="test_InProcess___sap_ReturnOfGoods_profile">
+            <command-set>test_InProcess___sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_9" name="test_InProcess___sap_only_cancel_dossier_profile">
+            <command-set>test_InProcess___sap_only_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_10" name="test_InProcess___rata_accept_profile">
+            <command-set>test_InProcess___rata_accept_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_200_11" name="test_InProcess___rata_fraud_profile">
+            <command-set>test_InProcess___rata_fraud_cmd_set</command-set>
+        </profile>
+        <profile id="201_3" name="test_withoutsap___sap_cancel_dossier_profile">
+            <command-set>ratanetdatabase___sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="201_4" name="test_withoutsap___sap_refuse_dossier_profile">
+            <command-set>ratanetdatabase___sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="201_5" name="test_withoutsap___sap_sign_contract_profile">
+            <command-set>ratanetdatabase___sap_sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="201_6" name="test_withoutsap___check_fraud_es_sap_profile">
+            <command-set>withoutsap___check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="201_7" name="test_withoutsap___sap_financed_profile">
+            <command-set>ratanetdatabase___sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="201_8" name="test_withoutsap___sap_ReturnOfGoods_profile">
+            <command-set>ratanetdatabase___sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_3" name="test_InProcess___sap_cancel_dossier_profile">
+            <command-set>test_InProcess___sap_cancel_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_4" name="test_InProcess___sap_refuse_dossier_profile">
+            <command-set>test_InProcess___sap_refuse_dossier_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_5" name="test_InProcess___sap_sign_contract_profile">
+            <command-set>test_InProcess___sap_sign_contract_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_6" name="test_InProcess___check_fraud_es_sap_profile">
+            <command-set>test_InProcess___check_fraud_es_sap_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_7" name="test_InProcess___sap_financed_profile">
+            <command-set>test_InProcess___sap_financed_cmd_set</command-set>
+        </profile>
+        <profile id="InProcess_201_8" name="test_InProcess___sap_ReturnOfGoods_profile">
+            <command-set>test_InProcess___sap_ReturnOfGoods_cmd_set</command-set>
+        </profile>
+    </profiles>
+</dossieranalyser-config>
