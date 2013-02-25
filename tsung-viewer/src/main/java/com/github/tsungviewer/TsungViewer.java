@@ -467,16 +467,14 @@ public class TsungViewer extends javax.swing.JFrame {
             } else if (userObject instanceof Session) {
                 setText(((Session) userObject).getName());
                 setToolTipText("probability=" + ((Session) userObject).getProbability() + " type=" + ((Session) userObject).getType());
-            } 
-            
-
-            
-            else {
+            } else if (userObject instanceof Transaction) {
+                setText(((Transaction) userObject).getName());
+            } else if (userObject instanceof Request) {
+                setText(((Request) userObject).getHttp().getMethod() + " " + ((Request) userObject).getHttp().getUrl());
+            } else {
                 setText(value.toString() + " [" + userObject.getClass().getName() + "]");
             }
             return this;
         }
     }
-
-    
 }
