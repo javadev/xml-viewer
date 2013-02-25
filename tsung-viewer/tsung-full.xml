@@ -1,1046 +1,954 @@
-<?xml version="1.0"?>
-<!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd">
-<tsung loglevel="info" version="1.0" dumptraffic="protocol">
-
-  <clients>
-    <client host="localhost" use_controller_vm="true" maxusers="25000"/>
-  </clients>
-
-<servers>
-  <server host="www-stg2.galabingo.com" port="80" type="tcp"/>
-</servers>
-
-<load>
-  <arrivalphase phase="2" duration="120" unit="minute">
-    <users maxnumber="100000" interarrival="0.08" unit="second"/>
-  </arrivalphase>
-</load>
-
-<options>
-  <option name="file_server" id="new_users" value="/home/ubuntu/bingo/new_users.csv"/>
-  <option name="file_server" id="registered_users1" value="/home/ubuntu/bingo/registered_users1.csv"/>
-  <option name="file_server" id="registered_users2" value="/home/ubuntu/bingo/registered_users2.csv"/>
-  <option name="file_server" id="registered_users3" value="/home/ubuntu/bingo/registered_users3.csv"/>
-  <option name="file_server" id="registered_users4" value="/home/ubuntu/bingo/registered_users4.csv"/>
-
-</options>
-
-<sessions>
-
-<session name="General_Site_Navigation" probability="14" type="ts_http">
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Bingo_Tab">
-<request><http url="http://www-stg2.galabingo.com/bingo" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Slots_Tab">
-<request><http url="http://www-stg2.galabingo.com/slots" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Games_Tab">
-<request><http url="http://www-stg2.galabingo.com/games" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Vegas_Tab">
-<request><http url="http://www-stg2.galabingo.com/casino" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Mobile_Tab">
-<request><http url="http://www-stg2.galabingo.com/mobile" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Promotions_Tab">
-<request><http url="http://www-stg2.galabingo.com/promotions" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Wellcome_Offers">
-<request><http url="http://www-stg2.galabingo.com/promotions/welcome" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Current">
-<request><http url="http://www-stg2.galabingo.com/promotions/current" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Community">
-<request><http url="http://www-stg2.galabingo.com/community" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Clubs">
-<request><http url="http://www-stg2.galabingo.com/clubs" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Find_Club">
-<request><http url="http://www-stg2.galabingo.com/clubs/find-clubs?find-casino=page&amp;postCode=W11%202BQ" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Home">
-<request><http url="http://www-stg2.galabingo.com/home" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Load_Forgotten_Password_overlay">
-<request><http url="http://www-stg2.galabingo.com/home?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=forgotpassword_WAR_commonportlet&amp;t=1336719648932" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-
-<session name="Open_Account" probability="3" type="ts_http">
-<setdynvars sourcetype="file" fileid="new_users" delimiter=";" order="iter">
-<var name="uname"/>
-<var name="passsword"/>
-</setdynvars>
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="40"/>
-
-<transaction name="Click_Register_Link">
-<request><http url="http://www-stg2.galabingo.com/register" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="80"/>
-
-<transaction name="Username_Lookup">
-<request subst="true"><http url='http://www-stg2.galabingo.com/register?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=registration2_WAR_commonportlet&amp;t=1334154380880' version='1.1'  contents='action=checkUserNameAvailability&amp;firstName=sdfsfrrr&amp;lastName=sdfsf&amp;userName=%%_uname%%&amp;lic=gala' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="40"/>
-
-<transaction name="Register_Account">
-<request><http url='http://www-stg2.galabingo.com/register?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=registration2_WAR_commonportlet&amp;t=1334154391188' version='1.1'  contents='action=confirmregistration&amp;userName=%%_uname%%&amp;trackingData=&amp;referrer=http%3A%2F%2Fadmin-portal-stg2.galabingo.com%2F&amp;lic=gala&amp;clienttype=&amp;serial=&amp;language=&amp;skin=&amp;advertiser=&amp;profileid=&amp;bannerid=&amp;creferer=&amp;title=mrs&amp;firstName=sdfsfrrr&amp;lastName=sdfsf&amp;birthDay=05&amp;birthMonth=08&amp;birthYear=1971&amp;country=GB&amp;ukpostcode=W11+2BQ&amp;house=Flat+1%2C+14&amp;address=Colville+Square&amp;address2=&amp;city=London&amp;postcode=W11+2BQ&amp;phoneAreaCode=%2B44&amp;phone=3434535353&amp;mobileAreaCode=%2B44&amp;mobile=3453453453&amp;email=test%40playtech.com&amp;emailVerification=test%40playtech.com&amp;requestPromotionalNotificationEmailAndSms=true&amp;_requestPromotionalNotificationEmailAndSms=on&amp;userPassword=Q1w2e3r4&amp;passwordVerify=Q1w2e3r4&amp;verificationQuestion=Where+did+you+meet+your+partner%3F&amp;verificationAnswer=cccccccc&amp;currency=GBP&amp;coupon=&amp;termsAndConditions=true&amp;_termsAndConditions=on' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334154397210' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="40"/>
-
-<transaction name="Logoff">
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/home' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-<session name="View_Payment_Methods" probability="10" type="ts_http">
-<setdynvars sourcetype="file" fileid="registered_users1" delimiter=";" order="iter">
-<var name="uname1"/>
-<var name="passsword"/>
-</setdynvars>
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Login">
-<request subst="true"><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712' version='1.1'  contents='action=login&amp;login=%%_uname1%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Bingo_Tab">
-<request><http url="http://www-stg2.galabingo.com/bingo" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Slots_Tab">
-<request><http url="http://www-stg2.galabingo.com/slots" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Games_Tab">
-<request><http url="http://www-stg2.galabingo.com/games" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Vegas_Tab">
-<request><http url="http://www-stg2.galabingo.com/casino" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Mobile_Tab">
-<request><http url="http://www-stg2.galabingo.com/mobile" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Promotions_Tab">
-<request><http url="http://www-stg2.galabingo.com/promotions" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Wellcome_Offers">
-<request><http url="http://www-stg2.galabingo.com/promotions/welcome" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Current">
-<request><http url="http://www-stg2.galabingo.com/promotions/current" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Community">
-<request><http url="http://www-stg2.galabingo.com/community" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Clubs">
-<request><http url="http://www-stg2.galabingo.com/clubs" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Find_Club">
-<request><http url="http://www-stg2.galabingo.com/clubs/find-clubs?find-casino=page&amp;postCode=W11%202BQ" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Home">
-<request><http url="http://www-stg2.galabingo.com/home" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Logoff">
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/home' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-
-
-
-<session name="View_Wallet_Breakdown" probability="10" type="ts_http">
-<setdynvars sourcetype="file" fileid="registered_users2" delimiter=";" order="iter">
-<var name="uname2"/>
-<var name="passsword"/>
-</setdynvars>
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="Login">
-<request subst="true"><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712' version='1.1'  contents='action=login&amp;login=%%_uname2%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="My_Account">
-<request><http url='http://www-stg2.galabingo.com/my-account' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="View_Pending_Bonus">
-<request><http url='http://www-stg2.galabingo.com/my-account/bonus' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="View_Transaction_History">
-<request><http url='http://portal-stg2.galabingo.com/my-account/history' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="View_Promotions">
-<request><http url='http://www-stg2.galabingo.com/my-account/promotions' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="My_Account">
-<request><http url='http://www-stg2.galabingo.com/my-account' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-
-<thinktime random="true" value="25"/>
-
-<transaction name="My_Details">
-<request><http url='http://www-stg2.galabingo.com/my-account/my-details' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="25"/>
-
-<transaction name="Logoff">
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/home' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-
-
-<session name="Responsible_Gaming_Favourites" probability="3" type="ts_http">
-<setdynvars sourcetype="file" fileid="registered_users3" delimiter=";" order="iter">
-<var name="uname3"/>
-<var name="passsword"/>
-</setdynvars>
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Login">
-<request subst="true"><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712' version='1.1'  contents='action=login&amp;login=%%_uname3%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Bingo_Tab">
-<request><http url="http://www-stg2.galabingo.com/bingo" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="My_Account">
-<request><http url="http://www-stg2.galabingo.com/my-account" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Responsible_Gaming">
-<request><http url='http://www-stg2.galabingo.com/my-account/responsible-gaming' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Home">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="My_Account">
-<request><http url="http://www-stg2.galabingo.com/my-account" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Bonus_Codes">
-<request><http url='http://www-stg2.galabingo.com/my-account/bonus' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Games">
-<request><http url='http://www-stg2.galabingo.com/games' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Select_Add_To_Favourites">
-<request><http url='http://www-stg2.galabingo.com/games?p_p_lifecycle=2&amp;p_p_state=exclusive&amp;p_p_id=gamesinfo_WAR_gamesportlet_INSTANCE_0AFz&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_resource=addtofavourites&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gcode=splsc&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gtype=pt&amp;p_p_resource_id=addtofavourites&amp;t=1334167349634' version='1.1' content_type='application/x-www-form-urlencoded' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Deselect_Favourites">
-<request><http url='http://www-stg2.galabingo.com/games?p_p_lifecycle=2&amp;p_p_state=exclusive&amp;p_p_id=gamesinfo_WAR_gamesportlet_INSTANCE_0AFz&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_resource=removefromfavourites&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gcode=splsc&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gtype=pt&amp;p_p_resource_id=removefromfavourites&amp;t=1334167354634' version='1.1' content_type='application/x-www-form-urlencoded' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="23"/>
-
-<transaction name="Logoff">
-<request><http url='http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/home' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-
-
-
-
-<session name="Play_Slots_For_Free" probability="30" type="ts_http">
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="55"/>
-
-<transaction name="Select_Slots">
-<request><http url="http://www-stg2.galabingo.com/slots" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="55"/>
-
-<transaction name="Select_5_Reel_Slots">
-<request><http url="http://www-stg2.galabingo.com/slots/5-reel" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-
-
-
-
-
-
-
-<session name="Play_Slots_For_real" probability="30" type="ts_http">
-<setdynvars sourcetype="file" fileid="registered_users4" delimiter=";" order="iter">
-<var name="uname4"/>
-<var name="passsword"/>
-</setdynvars>
-
-<transaction name="Open_Home_page">
-<request><http url="http://www-stg2.galabingo.com/" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="30"/>
-
-<transaction name="Login">
-<request subst="true"><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712' version='1.1'  contents='action=login&amp;login=%%_uname4%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="30"/>
-
-<transaction name="Select_Slots">
-<request><http url="http://www-stg2.galabingo.com/slots" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="30"/>
-
-<transaction name="Select_5_Reel_Slots">
-<request><http url="http://www-stg2.galabingo.com/slots/5-reel" version="1.1" method="GET">
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="30"/>
-
-<transaction name="Update_balance">
-<request><http url='https://www-stg2.galabingo.com/slots/5-reel?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538' version='1.1'  contents='remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false' content_type='application/x-www-form-urlencoded;charset=UTF-8' method='POST'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-<thinktime random="true" value="30"/>
-
-<transaction name="Logoff">
-<request><http url='http://www-stg2.galabingo.com/slots/5-reel?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308' version='1.1' content_type='application/x-www-form-urlencoded' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-<request><http url='http://www-stg2.galabingo.com/home' version='1.1' method='GET'>
-		<http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
-		<http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
-		<http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
-		<http_header name="Accept-Language" value="en-US,en;q=0.8"/>
-	</http>
-</request>
-</transaction>
-
-</session>
-
-</sessions>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tsung dumptraffic="protocol" loglevel="info" version="1.0">
+    <clients>
+        <client host="localhost" maxusers="25000" use_controller_vm="true"/>
+    </clients>
+    <servers>
+        <server host="www-stg2.galabingo.com" port="80" type="tcp"/>
+    </servers>
+    <load>
+        <arrivalphase duration="120" phase="2" unit="minute">
+            <users interarrival="0.08" maxnumber="100000" unit="second"/>
+        </arrivalphase>
+    </load>
+    <options>
+        <option id="new_users" name="file_server" value="/home/ubuntu/bingo/new_users.csv"/>
+        <option id="registered_users1" name="file_server" value="/home/ubuntu/bingo/registered_users1.csv"/>
+        <option id="registered_users2" name="file_server" value="/home/ubuntu/bingo/registered_users2.csv"/>
+        <option id="registered_users3" name="file_server" value="/home/ubuntu/bingo/registered_users3.csv"/>
+        <option id="registered_users4" name="file_server" value="/home/ubuntu/bingo/registered_users4.csv"/>
+    </options>
+    <sessions>
+        <session name="General_Site_Navigation" probability="14" type="ts_http">
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Bingo_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/bingo" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Slots_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Games_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/games" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Vegas_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/casino" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Mobile_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/mobile" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Promotions_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Wellcome_Offers">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions/welcome" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Current">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions/current" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Community">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/community" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Clubs">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/clubs" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Find_Club">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/clubs/find-clubs?find-casino=page&amp;postCode=W11%202BQ" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Home">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Load_Forgotten_Password_overlay">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=forgotpassword_WAR_commonportlet&amp;t=1336719648932" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="Open_Account" probability="3" type="ts_http">
+            <setdynvars delimiter=";" fileid="new_users" order="iter" sourcetype="file">
+                <var name="uname"/>
+                <var name="passsword"/>
+            </setdynvars>
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="40"/>
+            <transaction name="Click_Register_Link">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/register" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="80"/>
+            <transaction name="Username_Lookup">
+                <request subst="true">
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=checkUserNameAvailability&amp;firstName=sdfsfrrr&amp;lastName=sdfsf&amp;userName=%%_uname%%&amp;lic=gala" method="POST" url="http://www-stg2.galabingo.com/register?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=registration2_WAR_commonportlet&amp;t=1334154380880" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="40"/>
+            <transaction name="Register_Account">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=confirmregistration&amp;userName=%%_uname%%&amp;trackingData=&amp;referrer=http%3A%2F%2Fadmin-portal-stg2.galabingo.com%2F&amp;lic=gala&amp;clienttype=&amp;serial=&amp;language=&amp;skin=&amp;advertiser=&amp;profileid=&amp;bannerid=&amp;creferer=&amp;title=mrs&amp;firstName=sdfsfrrr&amp;lastName=sdfsf&amp;birthDay=05&amp;birthMonth=08&amp;birthYear=1971&amp;country=GB&amp;ukpostcode=W11+2BQ&amp;house=Flat+1%2C+14&amp;address=Colville+Square&amp;address2=&amp;city=London&amp;postcode=W11+2BQ&amp;phoneAreaCode=%2B44&amp;phone=3434535353&amp;mobileAreaCode=%2B44&amp;mobile=3453453453&amp;email=test%40playtech.com&amp;emailVerification=test%40playtech.com&amp;requestPromotionalNotificationEmailAndSms=true&amp;_requestPromotionalNotificationEmailAndSms=on&amp;userPassword=Q1w2e3r4&amp;passwordVerify=Q1w2e3r4&amp;verificationQuestion=Where+did+you+meet+your+partner%3F&amp;verificationAnswer=cccccccc&amp;currency=GBP&amp;coupon=&amp;termsAndConditions=true&amp;_termsAndConditions=on" method="POST" url="http://www-stg2.galabingo.com/register?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=registration2_WAR_commonportlet&amp;t=1334154391188" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/deposit" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334154397210" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="40"/>
+            <transaction name="Logoff">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="View_Payment_Methods" probability="10" type="ts_http">
+            <setdynvars delimiter=";" fileid="registered_users1" order="iter" sourcetype="file">
+                <var name="uname1"/>
+                <var name="passsword"/>
+            </setdynvars>
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Login">
+                <request subst="true">
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=login&amp;login=%%_uname1%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Bingo_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/bingo" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Slots_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Games_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/games" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Vegas_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/casino" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Mobile_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/mobile" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Promotions_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Wellcome_Offers">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions/welcome" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Current">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/promotions/current" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Community">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/community" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Clubs">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/clubs" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Find_Club">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/clubs/find-clubs?find-casino=page&amp;postCode=W11%202BQ" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Home">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Logoff">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="View_Wallet_Breakdown" probability="10" type="ts_http">
+            <setdynvars delimiter=";" fileid="registered_users2" order="iter" sourcetype="file">
+                <var name="uname2"/>
+                <var name="passsword"/>
+            </setdynvars>
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="Login">
+                <request subst="true">
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=login&amp;login=%%_uname2%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="My_Account">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="View_Pending_Bonus">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/bonus" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="View_Transaction_History">
+                <request>
+                    <http method="GET" url="http://portal-stg2.galabingo.com/my-account/history" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="View_Promotions">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/promotions" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="My_Account">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="My_Details">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/my-details" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="25"/>
+            <transaction name="Logoff">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="Responsible_Gaming_Favourites" probability="3" type="ts_http">
+            <setdynvars delimiter=";" fileid="registered_users3" order="iter" sourcetype="file">
+                <var name="uname3"/>
+                <var name="passsword"/>
+            </setdynvars>
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Login">
+                <request subst="true">
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=login&amp;login=%%_uname3%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Bingo_Tab">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/bingo" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="My_Account">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Responsible_Gaming">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/responsible-gaming" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Home">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="My_Account">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Bonus_Codes">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/my-account/bonus" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Games">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/games" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Select_Add_To_Favourites">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="POST" url="http://www-stg2.galabingo.com/games?p_p_lifecycle=2&amp;p_p_state=exclusive&amp;p_p_id=gamesinfo_WAR_gamesportlet_INSTANCE_0AFz&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_resource=addtofavourites&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gcode=splsc&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gtype=pt&amp;p_p_resource_id=addtofavourites&amp;t=1334167349634" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Deselect_Favourites">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="POST" url="http://www-stg2.galabingo.com/games?p_p_lifecycle=2&amp;p_p_state=exclusive&amp;p_p_id=gamesinfo_WAR_gamesportlet_INSTANCE_0AFz&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_resource=removefromfavourites&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gcode=splsc&amp;_gamesinfo_WAR_gamesportlet_INSTANCE_0AFz_gtype=pt&amp;p_p_resource_id=removefromfavourites&amp;t=1334167354634" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="23"/>
+            <transaction name="Logoff">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/my-account/deposit?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="Play_Slots_For_Free" probability="30" type="ts_http">
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="55"/>
+            <transaction name="Select_Slots">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="55"/>
+            <transaction name="Select_5_Reel_Slots">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots/5-reel" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+        <session name="Play_Slots_For_real" probability="30" type="ts_http">
+            <setdynvars delimiter=";" fileid="registered_users4" order="iter" sourcetype="file">
+                <var name="uname4"/>
+                <var name="passsword"/>
+            </setdynvars>
+            <transaction name="Open_Home_page">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="30"/>
+            <transaction name="Login">
+                <request subst="true">
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="action=login&amp;login=%%_uname4%%&amp;password=Q1w2e3r4&amp;remember-me=false&amp;playtech_login_real_mode=true&amp;playtech_login_requested=true" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334158250712" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=loginmessages_WAR_commonportlet&amp;t=1334158257974" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="https://www-stg2.galabingo.com/?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="30"/>
+            <transaction name="Select_Slots">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="30"/>
+            <transaction name="Select_5_Reel_Slots">
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/slots/5-reel" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="30"/>
+            <transaction name="Update_balance">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded;charset=UTF-8" contents="remote=false&amp;action=updateBalance&amp;playtech_poll_user_balance=false&amp;playtech_refresh_with_cache=false" method="POST" url="https://www-stg2.galabingo.com/slots/5-reel?p_p_lifecycle=0&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;t=1334154397538" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+            <thinktime random="true" value="30"/>
+            <transaction name="Logoff">
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/slots/5-reel?p_p_lifecycle=1&amp;p_p_state=exclusive&amp;p_p_id=login_WAR_commonportlet&amp;_login_WAR_commonportlet_action=logout&amp;t=1334154704140&amp;_=1334154704141" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http content_type="application/x-www-form-urlencoded" method="GET" url="http://www-stg2.galabingo.com/c/portal/logout?ieparam=1336729735308" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+                <request>
+                    <http method="GET" url="http://www-stg2.galabingo.com/home" version="1.1">
+                        <http_header name="Accept" value="text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"/>
+                        <http_header name="Accept-Encoding" value="gzip,deflate,sdch"/>
+                        <http_header name="Accept-Charset" value="ISO-8859-1,utf-8;q=0.7,*;q=0.3"/>
+                        <http_header name="Accept-Language" value="en-US,en;q=0.8"/>
+                    </http>
+                </request>
+            </transaction>
+        </session>
+    </sessions>
 </tsung>

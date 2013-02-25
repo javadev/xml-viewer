@@ -17,6 +17,12 @@
  */
 package com.github.tsungviewer;
 
+import com.github.tsungviewer.stubs.Client;
+import com.github.tsungviewer.stubs.Clients;
+import com.github.tsungviewer.stubs.Request;
+import com.github.tsungviewer.stubs.Server;
+import com.github.tsungviewer.stubs.Session;
+import com.github.tsungviewer.stubs.Transaction;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.logging.Level;
@@ -29,8 +35,18 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import com.github.tsungviewer.stubs.Tsung;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JTree;
+import javax.swing.ToolTipManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 public class TsungViewer extends javax.swing.JFrame {
     
@@ -60,7 +76,7 @@ public class TsungViewer extends javax.swing.JFrame {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             marshaller.marshal(config, file);
         } catch (JAXBException e) {
-            Logger.getLogger(TsungViewer.class.getName()).warning("Can't create JAXB Marshaller " + e.getMessage());
+            Logger.getLogger(TsungViewer.class.getName()).log(Level.WARNING, "Can''t create JAXB Marshaller {0}", e.getMessage());
         }
     }
 
@@ -77,7 +93,7 @@ public class TsungViewer extends javax.swing.JFrame {
             unmarshaller = jContext.createUnmarshaller();
             config = (Tsung) unmarshaller.unmarshal(xml);
         } catch (JAXBException e) {
-            Logger.getLogger(TsungViewer.class.getName()).warning("Can't create JAXB Unmarshaller, " + xml);
+            Logger.getLogger(TsungViewer.class.getName()).log(Level.WARNING, "Can''t create JAXB Unmarshaller, {0}", xml);
         }
         return config;
     }
@@ -256,7 +272,7 @@ public class TsungViewer extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .add(jSplitPane1)
         );
 
         pack();
@@ -282,7 +298,7 @@ public class TsungViewer extends javax.swing.JFrame {
         file = chooser.getSelectedFile();
         jButton1.setEnabled(true);
         config = extractXml(file);
-//        initTree();
+        initTree();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -327,7 +343,6 @@ public class TsungViewer extends javax.swing.JFrame {
             } catch (UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(TsungViewer.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return;
         }
     }
 
@@ -358,5 +373,110 @@ public class TsungViewer extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
+
+    private void initTree() {
+        DefaultMutableTreeNode treeNode = new DefaultMutableTreeNode("root");
+        DefaultTreeModel model = new DefaultTreeModel(treeNode);
+        DefaultMutableTreeNode clientsNode = new DefaultMutableTreeNode("Clients");
+        model.insertNodeInto(clientsNode, treeNode, treeNode.getChildCount());
+        model.insertNodeInto(new DefaultMutableTreeNode(config.getClients().getClient()), clientsNode, clientsNode.getChildCount());
+        DefaultMutableTreeNode serversNode = new DefaultMutableTreeNode("Servers");
+        model.insertNodeInto(serversNode, treeNode, treeNode.getChildCount());
+        model.insertNodeInto(new DefaultMutableTreeNode(config.getServers().getServer()), serversNode, serversNode.getChildCount());
+        DefaultMutableTreeNode sessionsNode = new DefaultMutableTreeNode("Sessions");
+        model.insertNodeInto(sessionsNode, treeNode, treeNode.getChildCount());
+        for (Session session : config.getSessions().getSession()) {
+            DefaultMutableTreeNode sessionNode = new DefaultMutableTreeNode(session);
+            model.insertNodeInto(sessionNode, sessionsNode, sessionsNode.getChildCount());
+            for (Object thinktimeOrTransaction : session.getThinktimeOrTransaction()) {
+                if (thinktimeOrTransaction instanceof Transaction) {
+                    Transaction transaction = (Transaction) thinktimeOrTransaction;
+                    DefaultMutableTreeNode transactionNode = new DefaultMutableTreeNode(transaction);
+                    model.insertNodeInto(transactionNode, sessionNode, sessionNode.getChildCount());
+                    for (Request request : transaction.getRequest()) {
+                        DefaultMutableTreeNode requestNode = new DefaultMutableTreeNode(request);
+                        model.insertNodeInto(requestNode, transactionNode, transactionNode.getChildCount());
+                    }
+                }
+            }
+        }
+        jTree1.setModel(model);
+        ToolTipManager.sharedInstance().registerComponent(jTree1);
+        jTree1.setCellRenderer(new MyRenderer());
+        MouseListener ml = new MouseAdapter() {
+            private void myPopupEvent(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                JTree tree = (JTree)e.getSource();
+                TreePath path = tree.getPathForLocation(x, y);
+                if (path == null) {
+                    return;
+                }
+                jTree1.setSelectionPath(path);
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+//                final String labelData = node.getUserObject() instanceof Action
+//                        ? ((Action) node.getUserObject()).getId() : node.getUserObject() instanceof CommandSet
+//                        ? ((CommandSet) node.getUserObject()).getId() : node.getUserObject().toString();
+//
+//                String label = labelData;
+//                if (node.getUserObject() instanceof Action) {
+//                    label = "Copy " + ((Action) node.getUserObject()).getId();
+//                }
+//                JPopupMenu popup = new JPopupMenu();
+//                JMenuItem jMenuItem = new JMenuItem(label);
+//                jMenuItem.addActionListener(new ActionListener() {
+//                    public void actionPerformed(ActionEvent ae) {
+//                        StringSelection selection = new StringSelection(labelData);
+//                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+//                        clipboard.setContents(selection, selection);
+//                    }
+//                });
+//                popup.add(jMenuItem);
+//                popup.show(tree, x, y);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    myPopupEvent(e);
+                }
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    myPopupEvent(e);
+                }
+            }
+
+        };
+        jTree1.addMouseListener(ml);
+    }
+    
+    private class MyRenderer extends DefaultTreeCellRenderer {
+        @Override
+        public Component getTreeCellRendererComponent(JTree tree, Object value, boolean isSelected,
+            boolean isExpanded, boolean isLeaf, int row, boolean hasFocus) {
+            super.getTreeCellRendererComponent(tree, value, isSelected, isExpanded, isLeaf, row, hasFocus);
+            Object userObject = ((DefaultMutableTreeNode) value).getUserObject();
+            if (userObject instanceof Client) {
+                setText(((Client) userObject).getHost());
+                setToolTipText("maxusers=" + ((Client) userObject).getMaxusers());
+            } else if (userObject instanceof Server) {
+                setText(((Server) userObject).getHost());
+                setToolTipText("port=" + ((Server) userObject).getPort() + " type=" + ((Server) userObject).getType());
+            } else if (userObject instanceof Session) {
+                setText(((Session) userObject).getName());
+                setToolTipText("probability=" + ((Session) userObject).getProbability() + " type=" + ((Session) userObject).getType());
+            } 
+            
+
+            
+            else {
+                setText(value.toString() + " [" + userObject.getClass().getName() + "]");
+            }
+            return this;
+        }
+    }
+
     
 }
