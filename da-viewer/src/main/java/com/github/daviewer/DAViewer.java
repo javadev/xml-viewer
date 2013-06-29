@@ -75,6 +75,11 @@ public class DAViewer extends javax.swing.JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
             "XML config file", "xml");
         chooser.setFileFilter(filter);
+        chooser.setCurrentDirectory(new File("."));
+        final java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        final int x = (screenSize.width - getWidth()) / 2;
+        final int y = (screenSize.height - getHeight()) / 2;
+        setLocation(x, y);
     }
 
     private void createXml() throws UnsupportedOperationException {
