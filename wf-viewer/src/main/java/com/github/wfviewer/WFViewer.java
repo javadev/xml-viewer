@@ -73,8 +73,9 @@ public class WFViewer extends javax.swing.JFrame {
     private File file;
     private Stack<TreePath> history = new Stack<TreePath>();
     private JDialog searchDialog;
+    private JFileChooser chooser;
 
-    /** Creates new form Antenna */
+    /** Creates new form */
     public WFViewer() {
         initComponents();
         config = extractXml(new File("WFViewer-1.0.xml"));
@@ -88,6 +89,10 @@ public class WFViewer extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
+        final java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        final int x = (screenSize.width - getWidth()) / 2;
+        final int y = (screenSize.height - getHeight()) / 2;
+        setLocation(x, y);
     }
 
     private void createXml(IccConfig localConfig, File localFile) throws UnsupportedOperationException {
@@ -697,10 +702,11 @@ public class WFViewer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFileChooser chooser = new JFileChooser();
+        chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "XML config file", "xml");
         chooser.setFileFilter(filter);
+        chooser.setCurrentDirectory(new File("."));
         int returnVal = chooser.showOpenDialog(this);
         if (returnVal != JFileChooser.APPROVE_OPTION) {
             return;
